@@ -37,14 +37,5 @@ public class One {
 		}
 		
 		System.out.println(result);
-		for(int i = 0; i < numbers.size(); i++) {
-			for(int j = i+1; j < numbers.size(); j++) {
-				if(numbers.get(i).equals(numbers.get(j))) {
-					System.out.println(numbers.get(j) + "dis");
-				}
-				
-			}
-		
-		}
 	}
 }
