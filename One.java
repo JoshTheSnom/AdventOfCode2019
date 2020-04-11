@@ -1,31 +1,20 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 
 public class One {
 	public static void main(String args[]) {
-		ArrayList<Integer> numbers = new ArrayList<Integer>();
+		List<Integer> numbers = new ArrayList<>();
 		BufferedReader reader;
 		int result = 0;
-		boolean stop = false;
 		try {
-			reader = new BufferedReader(new FileReader(
-					"Input1.txt"));
+			reader = new BufferedReader(new FileReader("Input1.txt"));
 			String line = reader.readLine();
 			while (line != null) {
 				int mass = Integer.parseInt(line);
-				int fuel = 0;
-				int totalfuel = 0;
-				do {
-					fuel = mass/3;
-					fuel = fuel-2;
-					if(fuel > 0) {
-						mass = fuel;
-						totalfuel = totalfuel + mass;
-					}
-				}while(fuel > 0);
-				result = result + totalfuel;
+				
+				result += calcFuel(mass);
 				numbers.add(result);
 				// read next line
 				line = reader.readLine();
@@ -37,5 +26,18 @@ public class One {
 		}
 		
 		System.out.println(result);
+	}
+
+	public static int calcFuel(int aMass) {
+		int fuel = 0;
+		int totFuel = 0;
+		do {
+			fuel = (aMass/3)-2;
+			if(fuel > 0) {
+				aMass = fuel;
+				totFuel += aMass;
+			}
+		}while(fuel > 0);
+		return totFuel;
 	}
 }
